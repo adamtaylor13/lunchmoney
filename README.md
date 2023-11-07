@@ -2,6 +2,12 @@
 # LunchMoney: deno API module 🦕
 
 This project is a port of Lunch Money's developer API into an easily-accessible and portable module that can easily be imported and used from any deno script.
+
+## ⚠️ This is a work in progress ⚠️
+
+I'm primarily developing this to outfit quick scripts I write to help users with lunch money, but I'm happy to
+accomodate other features and use-cases! Either open a PR yourself, or open an issue and I'll see what I can do.
+
 ## Usage/Examples
 
 
