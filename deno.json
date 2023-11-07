@@ -12,10 +12,11 @@
   "tasks": {
     "start": "deno run --allow-net --allow-env --allow-read mod.ts",
     "test": "deno test --allow-net --allow-env --allow-read",
+    "test:watch": "deno test --watch --allow-net --allow-env --allow-read",
     "fmt": "deno fmt",
     "lint": "deno lint"
   },
   "imports": {
-    "@/": "./src/"
+    "src/": "./src/"
   }
 }
