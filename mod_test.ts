@@ -12,5 +12,6 @@ test({
     assert(mod != null);
     assertEquals(typeof mod.getTransactions, "function");
     assertEquals(typeof mod.getTags, "function");
+    assertEquals(typeof mod.updateTransaction, "function");
   },
 });
