@@ -15,8 +15,5 @@
     "test:watch": "deno test --watch --allow-net --allow-env --allow-read",
     "fmt": "deno fmt",
     "lint": "deno lint"
-  },
-  "imports": {
-    "src/": "./src/"
   }
 }

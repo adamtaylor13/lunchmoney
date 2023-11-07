@@ -1,5 +1,5 @@
-import { LM_API_TOKEN, TAGS_API } from "src/config.ts";
-import { Tag } from "src/types.ts";
+import { LM_API_TOKEN, TAGS_API } from "./config.ts";
+import { Tag } from "./types.ts";
 
 export async function getTags(): Promise<Tag[]> {
   const response = await fetch(TAGS_API, {

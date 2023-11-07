@@ -1,5 +1,5 @@
-import { LM_API_TOKEN, TRANSACTIONS_API } from "src/config.ts";
-import { Transaction } from "src/types.ts";
+import { LM_API_TOKEN, TRANSACTIONS_API } from "./config.ts";
+import { Transaction } from "./types.ts";
 
 export async function getTransactions(): Promise<Transaction[]> {
   const response = await fetch(TRANSACTIONS_API, {
