@@ -1,43 +1,96 @@
-# Project Title
 
-## Description
+# LunchMoney: deno API module 🦕
 
-This project is a Deno application. The main functionality of the application is
-to get transactions and tags. The project structure includes a main.ts file,
-which is the entry point of the application. There are also test files for the
-getTransactions and getTags functions, indicating that the project follows good
-development practices with a focus on testing.
+This project is a port of Lunch Money's developer API into an easily-accessible and portable module that can easily be imported and used from any deno script.
+## Usage/Examples
 
-## Files
 
-- .gitignore: This file is used to specify the files and directories that should
-  be ignored by Git.
-- deno.json: This file is related to the Deno runtime environment. It contains
-  configuration and dependency information, as well as tasks for running,
-  testing, formatting, and linting the code.
-- main.ts: This is the main entry point of the application. It exports the
-  getTransactions and getTags functions.
-- src/getTags.test.ts: This file contains a test for the getTags function. The
-  test checks that the function returns an array with a length greater than 0.
-- src/getTransactions.test.ts: This file contains a test for the getTransactions
-  function. The test checks that the function returns an array with a length
-  greater than 0.
+### Get all transactions (defaults to only this month)
 
-## Installation
+```typescript
+import { getTransactions } from "https://deno.land/x/lunchmoney/mod.ts";
+// OR use a specific version:
+import { getTransactions } from "https://deno.land/x/lunchmoney@alpha-0.0.4/mod.ts";
 
-To install the project, you will need to have Deno installed on your machine.
-Once Deno is installed, you can clone the repository and run the main.ts file.
+const transactions = await getTransactions();
+```
 
-## Usage
+### Get transactions with certain tag
 
-To use the application, you can import the getTransactions and getTags functions
-from the main.ts file and call them in your code.
+```typescript
+import { getTransactions } from "https://deno.land/x/lunchmoney/mod.ts";
+// OR use a specific version:
+import { getTransactions } from "https://deno.land/x/lunchmoney@alpha-0.0.4/mod.ts";
 
-## Contributing
+const transactionsWithTag = await getTransactions({
+    tag_id: 123
+});
+```
 
-To contribute to the project, you can create a fork of the repository, make your
-changes, and then submit a pull request.
+### Update transaction
 
-## License
+```typescript
+import { updateTransaction } from "https://deno.land/x/lunchmoney/mod.ts";
+// OR use a specific version:
+import { updateTransaction } from "https://deno.land/x/lunchmoney@alpha-0.0.4/mod.ts";
 
-To be defined.
+// Update the root transaction
+await updateTransaction({
+    transactionId: 123,
+    update: {
+        transaction: {
+            notes: "Oh wow, look at these new notes!"
+        }
+    }
+});
+
+// Create a split
+await updateTransaction({
+    transactionId: 123,
+    update: {
+        split: [
+            {
+                amount: 10,
+                notes: "First split",
+                category_id: 1,
+                tags: []
+            },
+            {
+                amount: 20,
+                notes: "Second split",
+                category_id: 2,
+                tags: ["tagId123"]
+            }
+        ]
+    }
+});
+```
+
+### Create a split
+
+```typescript
+import { updateTransaction } from "https://deno.land/x/lunchmoney/mod.ts";
+// OR use a specific version:
+import { updateTransaction } from "https://deno.land/x/lunchmoney@alpha-0.0.4/mod.ts";
+
+// Create a split
+await updateTransaction({
+    transactionId: 123, // Original transaction to split
+    update: {
+        split: [
+            {
+                amount: 10,
+                notes: "First split",
+                category_id: 1,
+                tags: []
+            },
+            {
+                amount: 20,
+                notes: "Second split",
+                category_id: 2,
+                tags: ["tagId123"]
+            }
+        ]
+    }
+});
+```
