@@ -1,6 +1,5 @@
-import { assertEquals } from "https://deno.land/std@0.186.0/testing/asserts.ts";
+import { assertEquals, denock } from "./test_deps.ts";
 import { getTransactions } from "./getTransactions.ts";
-import { denock } from "https://deno.land/x/denock/mod.ts";
 
 Deno.test(async function getAllTransactions() {
   // Define the mock which should match our request
