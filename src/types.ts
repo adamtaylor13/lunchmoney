@@ -17,6 +17,13 @@ export type TransactionParams = {
   end_date?: DateType;
 };
 
+export type Tag = {
+  id: number;
+  name: string;
+  description: string;
+  archived: boolean;
+};
+
 export type Transaction = {
   id: number;
   date: string;

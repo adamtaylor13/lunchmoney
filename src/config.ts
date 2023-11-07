@@ -2,6 +2,8 @@ import { config } from "https://deno.land/x/dotenv/mod.ts";
 await config({ export: true });
 
 export const TRANSACTIONS_API = "https://dev.lunchmoney.app/v1/transactions";
+export const TAGS_API = "https://dev.lunchmoney.app/v1/tags";
+
 const LM_API_TOKEN = Deno.env.get("LM_API_TOKEN");
 if (!LM_API_TOKEN) {
   throw new Error(
