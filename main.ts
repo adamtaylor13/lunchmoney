@@ -1,1 +1,1 @@
-export { getTransactions } from 'src/transactions/get.ts';
+export { getTransactions } from "src/transactions/get.ts";
