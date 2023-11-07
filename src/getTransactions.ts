@@ -1,12 +1,16 @@
-import { LM_API_TOKEN, TRANSACTIONS_API } from "./config.ts";
-import { Transaction } from "./types.ts";
+import { DEFAULT_HEADERS, TRANSACTIONS_API } from "./config.ts";
+import { Transaction, TransactionParams } from "./types.ts";
+import { createQueryParams } from "./api.ts";
 
-export async function getTransactions(): Promise<Transaction[]> {
-  const response = await fetch(TRANSACTIONS_API, {
-    headers: {
-      Authorization: `Bearer ${LM_API_TOKEN}`,
+export async function getTransactions(
+  transactionParams: TransactionParams = {},
+): Promise<Transaction[]> {
+  const response = await fetch(
+    `${TRANSACTIONS_API}${createQueryParams(transactionParams)}`,
+    {
+      headers: { ...DEFAULT_HEADERS },
     },
-  });
+  );
   const { transactions } = await response.json();
   return transactions;
 }
